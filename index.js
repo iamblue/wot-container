@@ -6,8 +6,8 @@ var wot = _wot.init({
 });
 
 function booting (config) {
-  // console.log(process.env.PWD)
-  var msgProcess = child_process.spawn('node', ['./app/index'], { stdio: ['ipc'] })
+  var mainFile = process.argv[1].replace(process.argv[1].split('/')[process.argv[1].split('/').length-1],'');
+  var msgProcess = child_process.spawn('node', [ mainFile + 'app/index'], { stdio: ['ipc'] })
   // var msgProcess = child_process.fork('./test/app.js');
 
   wot.on('device:onMessage', function(data) {
